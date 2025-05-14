@@ -32,24 +32,5 @@ export default class ProductList {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     
       }
-
-      renderList(productList) {
-        this.listElement.innerHTML = ""; // Clear previous items
-      
-        productList.forEach(product => {
-          const card = document.createElement("div");
-          card.classList.add("product-card");
-      
-          const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
-      
-          card.innerHTML = `
-            <h3>${product.Name}</h3>
-            <p><strong>Price:</strong> $${product.FinalPrice.toFixed(2)}</p>
-            ${isDiscounted ? `<p class="discount-tag">Discounted from $${product.SuggestedRetailPrice.toFixed(2)}!</p>` : ""}
-          `;
-      
-          this.listElement.appendChild(card);
-        });
-      }
       
   }

@@ -1,5 +1,5 @@
 import { renderListWithTemplate } from "./utils.mjs";
-function productCardTemplate(product) {
+/*function productCardTemplate(product) {
     return `<li class="product-card">
       <a href="product_pages/?product=">
         <img src="" alt="Image of ">
@@ -8,7 +8,30 @@ function productCardTemplate(product) {
         <p class="product-card__price">$</p>
       </a>
     </li>`
-  }
+  }*/
+
+function productCardTemplate(product) {
+  const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
+  const discountAmount = isDiscounted
+    ? Math.round(((product.SuggestedRetailPrice - product.FinalPrice) / product.SuggestedRetailPrice) * 100)
+    : 0;
+
+  return `<li class="product-card">
+    <a href="product_pages/?product=${product.Id}">
+      <img src="${product.Image}" alt="Image of ${product.Name}">
+      <h2 class="card__brand">${product.Brand}</h2>
+      <h3 class="card__name">${product.Name}</h3>
+      <p class="product-card__price">
+        ${isDiscounted
+          ? `<span class="discounted-price">$${product.FinalPrice}</span>
+             <span class="original-price">$${product.SuggestedRetailPrice}</span>
+             <span class="discount-badge">${discountAmount}% OFF</span>`
+          : `$${product.FinalPrice}`}
+      </p>
+    </a>
+  </li>`;
+}
+
 export default class ProductList {
     constructor(category, dataSource, listElement) {
       // You passed in this information to make the class as reusable as possible.

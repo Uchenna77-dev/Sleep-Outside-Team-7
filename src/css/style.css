@@ -94,6 +94,24 @@ p {
   margin-top: -1.7em;
 }
 
+/* Category Style */
+.category-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+}
+.category-grid img {
+  width: 70px;
+  height: 70px;
+  justify-self: center;
+}
+.category-grid p {
+  text-align: center;
+}
+
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);

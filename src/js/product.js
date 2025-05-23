@@ -1,7 +1,12 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import { getParam } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductDetails from "./ProductDetails.mjs";
+
+
+loadHeaderFooter();
+
 
 function addProductToCart(product) {
   const cartItems = getLocalStorage("so-cart") || []; // get cart array of items from local storage if null set to empty array

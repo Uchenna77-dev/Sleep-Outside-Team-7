@@ -149,6 +149,16 @@ button {
   fill: gray;
 }
 
+/* Cart total Style */
+.hide {
+  display: none;
+}
+.cart-footer {
+  text-align: right;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
 /* End cart icon styles */
 
 .mission {

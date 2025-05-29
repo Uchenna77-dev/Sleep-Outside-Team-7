@@ -336,12 +336,7 @@ button {
 .checkoutSubmit:hover {
     background-color: #012a55;
 }
- /* Sorting Style */
- .sort {
-  display: flex;
-  gap: 10px;
-  justify-content: right;
- }
+ 
 
 @media screen and (min-width: 500px) {
   body {

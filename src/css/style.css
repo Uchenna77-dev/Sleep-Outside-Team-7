@@ -290,6 +290,58 @@ button {
   font-size: 0.85rem;
 }
 
+/* Checkout Form */
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #9b9a9a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form fieldset {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.checkout-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#checkoutSubmit {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    max-width: 30%;
+    padding-top: 10px;
+    margin: 0 auto;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.checkoutSubmit:hover {
+    background-color: #012a55;
+}
+ /* Sorting Style */
+ .sort {
+  display: flex;
+  gap: 10px;
+  justify-content: right;
+ }
 
 @media screen and (min-width: 500px) {
   body {

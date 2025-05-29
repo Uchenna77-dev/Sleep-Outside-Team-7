@@ -39,21 +39,44 @@ export default class ProductList {
       this.category = category;
       this.dataSource = dataSource;
       this.listElement = listElement;
+       this.originalList = [];
     }
   
     async init() {
     const list = await this.dataSource.getData(this.category);
+    this.originalList = list;
     this.renderList(list);
     document.querySelector(".title").textContent = this.category;
-    }
 
-    renderList(list) {
-        // const htmlStrings = list.map(productCardTemplate);
-        // this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-    
-        // apply use new utility function instead of the commented code above
-        renderListWithTemplate(productCardTemplate, this.listElement, list);
-    
-      }
-      
+    // Set up sort event listener
+    document.getElementById("sortOptions").addEventListener("change", (e) => {
+      const sorted = this.sortList(this.originalList, e.target.value);
+      this.renderList(sorted);
+    });
   }
+
+  renderList(list) {
+    renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
+  }
+
+  sortList(list, criteria) {
+    const sorted = [...list]; // clone original array
+
+    switch (criteria) {
+      case "name-asc":
+        sorted.sort((a, b) => a.NameWithoutBrand.localeCompare(b.NameWithoutBrand));
+        break;
+      case "name-desc":
+        sorted.sort((a, b) => b.NameWithoutBrand.localeCompare(a.NameWithoutBrand));
+        break;
+      case "price-asc":
+        sorted.sort((a, b) => a.FinalPrice - b.FinalPrice);
+        break;
+      case "price-desc":
+        sorted.sort((a, b) => b.FinalPrice - a.FinalPrice);
+        break;
+    }
+    return sorted;
+  }
+}
+ 
